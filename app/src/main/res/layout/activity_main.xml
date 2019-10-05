@@ -16,7 +16,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text=" I             D"
+        android:text="아    이    디"
         android:textSize="14sp"
         android:translationY="20dp" />
 
@@ -31,7 +31,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:text="Password"
+        android:text="비 밀 번 호"
         android:transformPivotY="-15dp"
         android:translationY="-20dp" />
 
