@@ -1,14 +1,11 @@
 package com.example.a20181670_3layout;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,8 +26,8 @@ public class ThirdActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_layout);
 
-        Date = (TextView) findViewById(R.id.Date);
-        Gre = (TextView) findViewById(R.id.Gre);
+        Date = (TextView) findViewById(R.id.dateTextView);
+        Gre = (TextView) findViewById(R.id.greTextView);
 
         handler = new ProgressHandler();
 

@@ -6,24 +6,24 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/Date"
+        android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/Gre"
+        app:layout_constraintBottom_toTopOf="@id/greTextView"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Gre"
+        android:id="@+id/greTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/Date" />
+        app:layout_constraintTop_toBottomOf="@id/dateTextView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
