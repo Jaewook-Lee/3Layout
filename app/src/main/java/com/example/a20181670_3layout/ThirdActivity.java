@@ -60,6 +60,7 @@ public class ThirdActivity extends Activity {
         asyncTask.execute();
     }
 
+    // Source code 출처 : https://gasaesososo.tistory.com/12?category=728313
     class UsedAsync extends AsyncTask<Integer, Integer, Integer> {
         Calendar cal;
         String timeGre;
