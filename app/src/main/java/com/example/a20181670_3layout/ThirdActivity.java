@@ -1,113 +1,42 @@
 package com.example.a20181670_3layout;
 
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ThirdActivity extends Activity {
-    TextView Date, Gre;
-    UsedAsync asyncTask;
-    ProgressHandler handler;
-
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    String time;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.third_layout);
 
-        Date = (TextView) findViewById(R.id.dateTextView);
-        Gre = (TextView) findViewById(R.id.greTextView);
+        final ConstraintLayout myLayout = (ConstraintLayout) findViewById(R.id.background);
 
-        handler = new ProgressHandler();
+        Button redBtn, greenBtn, blueBtn, defaultBtn;
+        redBtn = (Button) findViewById(R.id.btnRed);
+        greenBtn = (Button) findViewById(R.id.btnGreen);
+        blueBtn = (Button) findViewById(R.id.btnBlue);
+        defaultBtn = (Button) findViewById(R.id.btnDefault);
 
-        runtime();
-
-    }
-
-    public void runtime() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true) {
-                    try {
-                        time = sdf.format(new Date(System.currentTimeMillis()));
-
-                        Message message = handler.obtainMessage();
-                        handler.sendMessage(message);
-
-                        Thread.sleep(1000);
-                    }catch (InterruptedException ex) {}
+        Button[] btnArray = {redBtn, greenBtn, blueBtn, defaultBtn};
+        for (final Button btnTarget : btnArray) {
+            btnTarget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    changeLayoutBackGround(myLayout, btnTarget);
                 }
-            }
-        });
-        thread.start();
-
-        asyncTask = new UsedAsync();
-        asyncTask.execute();
-    }
-
-    // Source code 출처 : https://gasaesososo.tistory.com/12?category=728313
-    class UsedAsync extends AsyncTask<Integer, Integer, Integer> {
-        Calendar cal;
-        String timeGre;
-
-        @Override
-        protected Integer doInBackground(Integer... params) {
-            while (isCancelled() == false) {
-                cal = new GregorianCalendar();
-                timeGre = String.format("%d/%d/%d %d:%d:%d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
-                        cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE),
-                        cal.get(Calendar.SECOND));
-                publishProgress();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                }
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            cal = new GregorianCalendar();
-            timeGre = String.format("%d/%d/%d %d:%d:%d", cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
-                    cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE),
-                    cal.get(Calendar.SECOND));
-            Gre.setText(timeGre);
-
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Integer integer){
-            super.onPostExecute(integer);
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            Gre.setText(timeGre);
-
-            super.onProgressUpdate(values);
+            });
         }
     }
 
-    class ProgressHandler extends Handler {
-
-        @Override
-        public void handleMessage(Message msg) {
-            Date.setText(time);
-        }
+    protected void changeLayoutBackGround(ViewGroup layout, Button btn) {
+        ColorDrawable btnColor = (ColorDrawable) btn.getBackground();
+        layout.setBackground(btnColor);
     }
 }
