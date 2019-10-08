@@ -5,31 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/dateTextView"
+    <Button
+        android:id="@+id/btnRed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/greTextView"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="40dp"
+        android:background="#FF0000"
+        android:text="빨   강"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBlue"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnGreen"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/greTextView"
+    <Button
+        android:id="@+id/btnGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30sp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="80dp"
+        android:background="#00FF00"
+        android:text="초   록"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDefault"
+        app:layout_constraintLeft_toRightOf="@id/btnRed"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="230dp"
+        android:background="#0000FF"
+        android:text="파   랑"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnDefault"
+        app:layout_constraintTop_toBottomOf="@id/btnRed" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <Button
+        android:id="@+id/btnDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="100dp" />
-
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="230dp"
+        android:text=" 기   본"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btnBlue"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGreen" />
 </androidx.constraintlayout.widget.ConstraintLayout>
