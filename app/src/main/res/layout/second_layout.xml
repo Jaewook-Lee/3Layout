@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="최대 12자, 특수 키 일부 가능"
             android:inputType="textPassword" />
     </LinearLayout>
 
@@ -108,7 +109,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="이름을 입력하세요"
             android:inputType="textPersonName" />
     </LinearLayout>
 
@@ -132,7 +132,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="전화번호를 입력하세요"
             android:inputType="phone" />
     </LinearLayout>
 
@@ -156,7 +155,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="주소를 입력하세요"
             android:inputType="textPersonName" />
     </LinearLayout>
 
