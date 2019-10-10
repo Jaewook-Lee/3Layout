@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,12 +25,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(getApplicationContext(), ThirdActivity.class);
 
-                if (false) {    // statement will be fixed later.
+                EditText idField, passwordField;
+                idField = (EditText) findViewById(R.id.idPlainText);
+                passwordField = (EditText) findViewById(R.id.passwordArea);
+
+                String userID = idField.getText().toString();
+                String userPassword = passwordField.getText().toString();
+
+                UserData data = new UserData(MainActivity.this);
+
+                if (data.findID(userID) && data.matchPW(userID, userPassword)) {
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(getBaseContext(), "아이디 또는 비밀번호가 틀렸습니다.",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 틀렸습니다." +
+                            "다시 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
