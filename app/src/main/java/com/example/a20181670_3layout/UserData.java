@@ -5,15 +5,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class UserData extends AppCompatActivity {
 
-    private HashMap<String, String> userInfo = new HashMap<String, String>();
+    private static HashMap<String, String> userInfo = new HashMap<String, String>();
     private static final String FILE_NAME = "TestData.txt";
 
     /* Constructor */
@@ -22,19 +23,19 @@ public class UserData extends AppCompatActivity {
     }
 
     public static void readFromFile(Context context) {
-        FileInputStream inFileStream;
         try {
-            if ((inFileStream = context.openFileInput(FILE_NAME))!= null) {
-                byte[] txt = new byte[inFileStream.available()];
-                inFileStream.read(txt);
-
-                String str = new String(txt);
-                Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT).show();
-
-                inFileStream.close();
+            File user_file = new File(context.getFileStreamPath(FILE_NAME).toString());
+            Scanner reader = new Scanner(user_file);
+            while(reader.hasNextLine()) {
+                String userInfoStr = reader.nextLine();
+                String[] userArray = userInfoStr.split(",");
+                userInfo.put(userArray[0], userArray[1]);
             }
-        } catch (IOException e) {
-            Toast.makeText(context.getApplicationContext(),"File NOT FOUND", Toast.LENGTH_SHORT).show();
+
+            reader.close();
+        } catch (IOException ie) {
+            Toast.makeText(context.getApplicationContext(), "FILE NOT FOUND",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
