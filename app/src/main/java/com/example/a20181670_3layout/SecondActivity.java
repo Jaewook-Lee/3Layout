@@ -90,6 +90,15 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /* If button clicked go back to 'activity_main' */
+        Button btnBack = (Button) findViewById(R.id.btnCancel);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /* Function : isPWImpossible
