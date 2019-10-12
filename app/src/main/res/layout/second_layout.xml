@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="최대 12자, 특수 키 일부 가능"
+            android:hint="6 ~ 12자, 특수 키 일부 가능"
             android:inputType="textPassword"
             android:maxLength="12" />
     </LinearLayout>
