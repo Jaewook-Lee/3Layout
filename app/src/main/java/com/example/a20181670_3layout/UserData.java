@@ -17,11 +17,6 @@ public class UserData extends AppCompatActivity {
     private static HashMap<String, String> userInfo = new HashMap<String, String>();
     private static final String FILE_NAME = "TestData.txt";
 
-    /* Constructor */
-    public UserData(Context context) {
-        readFromFile(context);
-    }
-
     public static void readFromFile(Context context) {
         try {
             File user_file = new File(context.getFileStreamPath(FILE_NAME).toString());
@@ -66,11 +61,11 @@ public class UserData extends AppCompatActivity {
         }
     }
 
-    public boolean findID(String id) {
+    public static boolean findID(String id) {
         return userInfo.containsKey(id);
     }
 
-    public boolean matchPW(String id, String pw) {
+    public static boolean matchPW(String id, String pw) {
         String origin_pw = userInfo.get(id);
         if (origin_pw.equals(pw)) {
             return true;

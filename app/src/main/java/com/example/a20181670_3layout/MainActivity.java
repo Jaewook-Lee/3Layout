@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UserData.readFromFile(MainActivity.this);
 
         Button btnSecondActivity, btnThirdActivity;
         btnSecondActivity = (Button) findViewById(R.id.btnLogin);
@@ -32,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 String userID = idField.getText().toString();
                 String userPassword = passwordField.getText().toString();
 
-                UserData data = new UserData(MainActivity.this);
-
-                if (data.findID(userID) && data.matchPW(userID, userPassword)) {
+                if (UserData.findID(userID) && UserData.matchPW(userID, userPassword)) {
                     startActivity(intent);
                 }
                 else {

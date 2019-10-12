@@ -17,15 +17,13 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_layout);
 
-        final UserData data = new UserData(SecondActivity.this);
-
         Button btnDuplicate = (Button) findViewById(R.id.btnDuplicate);
         btnDuplicate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText et_id = (EditText) findViewById(R.id.idPlainText);
                 String id = et_id.getText().toString();
-                if (!data.findID(id)) {
+                if (!UserData.findID(id)) {
                     Toast.makeText(getApplicationContext(), "가능합니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -56,7 +54,7 @@ public class SecondActivity extends AppCompatActivity {
                     }
                     else {
                         String[] userInfo = {id, pw, name, phone_num, addr};
-                        data.writeToFile(SecondActivity.this, userInfo);
+                        UserData.writeToFile(SecondActivity.this, userInfo);
                         Toast.makeText(getApplicationContext(), "회원가입이 완료됐습니다." +
                                 "다시 로그인해주세요.", Toast.LENGTH_LONG).show();
                         finish();
